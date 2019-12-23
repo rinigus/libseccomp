@@ -43,6 +43,7 @@ Kernel.
 %setup -q -n %{name}-%{version}/libseccomp
 
 %build
+./autogen.sh
 %configure
 %make_build
 
