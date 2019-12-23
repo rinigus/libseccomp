@@ -9,7 +9,6 @@ Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # Backports from upstream
 BuildRequires:  gcc
 BuildRequires:  make
-BuildRequires:  valgrind >= 1:3.13.0-4
 
 %description
 The libseccomp library provides an easy to use interface to the Linux Kernel's
