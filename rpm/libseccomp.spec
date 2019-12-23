@@ -7,17 +7,9 @@ URL:            https://github.com/seccomp/libseccomp
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
 # Backports from upstream
-Patch0001:      0001-api-define-__SNR_ppoll-again.patch
-Patch0002:      0001-tests-rely-on-__SNR_xxx-instead-of-__NR_xxx-for-sysc.patch
-
 BuildRequires:  gcc
 BuildRequires:  make
-
-%ifnarch riscv64 s390
-# Versions prior to 3.13.0-4 do not work on ARM with newer glibc 2.25.0-6
-# See https://bugzilla.redhat.com/show_bug.cgi?id=1466017
 BuildRequires:  valgrind >= 1:3.13.0-4
-%endif
 
 %description
 The libseccomp library provides an easy to use interface to the Linux Kernel's
@@ -49,7 +41,7 @@ application is allowed to execute, all of which are enforced by the Linux
 Kernel.
 
 %prep
-%autosetup -p1
+%setup -q -n %{name}-%{version}/libseccomp
 
 %build
 %configure
@@ -72,6 +64,9 @@ rm -f tests/36-sim-ipc_syscalls.tests tests/37-sim-ipc_syscalls_be.tests
 %endif
 %make_build check
 
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
 
 %files
 %license LICENSE
