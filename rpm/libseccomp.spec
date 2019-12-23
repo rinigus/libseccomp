@@ -29,17 +29,6 @@ to specify which syscalls, and optionally which syscall arguments, the
 application is allowed to execute, all of which are enforced by the Linux
 Kernel.
 
-%package static
-Summary:        Enhanced seccomp static library
-Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
-
-%description static
-The libseccomp library provides an easy to use interface to the Linux Kernel's
-syscall filtering mechanism, seccomp.  The libseccomp API allows an application
-to specify which syscalls, and optionally which syscall arguments, the
-application is allowed to execute, all of which are enforced by the Linux
-Kernel.
-
 %prep
 %setup -q -n %{name}-%{version}/libseccomp
 
@@ -82,9 +71,6 @@ rm -f tests/36-sim-ipc_syscalls.tests tests/37-sim-ipc_syscalls_be.tests
 %{_bindir}/scmp_sys_resolver
 %{_mandir}/man1/*
 %{_mandir}/man3/*
-
-%files static
-%{_libdir}/libseccomp.a
 
 %changelog
 * Mon Dec 16 2019 Neal Gompa <ngompa13@gmail.com> - 2.4.2-2
