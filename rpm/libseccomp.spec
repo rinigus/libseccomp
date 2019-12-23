@@ -9,6 +9,7 @@ Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # Backports from upstream
 BuildRequires:  gcc
 BuildRequires:  make
+BuildRequires: autoconf automake libtool
 
 %description
 The libseccomp library provides an easy to use interface to the Linux Kernel's
